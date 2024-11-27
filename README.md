@@ -2,7 +2,7 @@ For contents to include in the report, we can refer to the lecture slides.
 
 https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/assignment2_fa24.pdf
 
-raw data in
+raw data in df_modcloth.csv.
 
 # 1. Identify a dataset to study
 https://cseweb.ucsd.edu/~jmcauley/datasets.html#market_bias
