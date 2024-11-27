@@ -43,7 +43,7 @@ In the paper, they have done some analysis, we can take a look at it.
 2. latent factor model with extension, using feature vector \(page 189-191 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
 3. feature engineering xgboost
    1. feature vector includes user_average_rating, item_average_rating and other features.
-   2. for unseen user, user_average_rating equals
+   2. for unseen user, user_average_rating equals 0. It's similar to item_average_rating.
 4. early stop when loss on validation set starts to increase.
 5. retrain on both train set and validation set.
 
