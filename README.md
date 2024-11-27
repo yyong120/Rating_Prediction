@@ -39,6 +39,14 @@ In the paper, they have done some analysis, we can take a look at it.
 
 
 # 3. Select/design an appropriate model
+1. latent factor model \(page 93 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
+2. latent factor model with extension, using feature vector \(page 189-191 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
+3. feature engineering xgboost
+   1. feature vector includes user_average_rating, item_average_rating and other features.
+   2. for unseen user, user_average_rating equals
+4. early stop when loss on validation set starts to increase.
+5. retrain on both train set and validation set.
+
 ## unseen user/item
 map to 0
 
@@ -293,14 +301,6 @@ bst.save_model('xgboost_model_with_early_stopping.json')
 
 print(bst.best_iteration)
 ```
-
-1. latent factor model \(page 93 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
-2. latent factor model with extension, using feature vector \(page 189-191 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
-3. feature engineering xgboost
-   1. feature vector includes user_average_rating, item_average_rating and other features.
-   2. for unseen user, user_average_rating equals
-4. early stop when loss on validation set starts to increase.
-5. retrain on both train set and validation set.
 
 To Tune hyper-parameters using grid search
 ```python
