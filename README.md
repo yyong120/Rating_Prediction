@@ -4,6 +4,11 @@ https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/assignment2_fa24.pdf
 
 raw data in df_modcloth.csv.
 
+# (Temporary Dialogue)
+Xudong: I'm a little bit tired, I only finished the data preprocessing part. I will try to write more code (the models) on the evening of 11/28. Maybe you guys can start with section 1/2/4 of the report. Also, feel free to implement any models that you like.
+
+Thank you CXY and GXY.
+
 # 1. Identify a dataset to study
 https://cseweb.ucsd.edu/~jmcauley/datasets.html#market_bias
 
@@ -31,6 +36,7 @@ In the paper, they have done some analysis, we can take a look at it.
 2. how to divide training set, validation set, test set
    1. make sure each user have some data in all three sets
    2. make sure test set contains some unseen users\(/products\) \(like in real life\)
+   3. test set = seen \(user\) test set + unseen \(user\) test set
 3. for each user $u$, count the number of miss-ranked product pairs
    $$
       \frac{1}{2 \left| U \right|} \sum_{u} \sum_{i \in I_{u}} \sum_{j \in I_{u}\backslash\{i\}} \delta\left( (r_{i} - r_{j}) (\hat{r}_{i} - \hat{r}_{j}) < 0 \right) 
@@ -42,8 +48,9 @@ In the paper, they have done some analysis, we can take a look at it.
 1. latent factor model \(page 93 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
 2. latent factor model with extension, using feature vector \(page 189-191 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
 3. feature engineering xgboost
-   1. feature vector includes user_average_rating, item_average_rating and other features.
-   2. for unseen user, user_average_rating equals 0. It's similar to item_average_rating.
+   1. feature vector includes user_average_rating, item_average_rating, and other features.
+      1. We have considered add the number items a user bought and the number of users purchasing the item into the feature vector. However, these two values can greatly change according to how we divide the train set, validation set and test set. So it may be unstable to include them into the feature vectors. But if we have time, we can do some experiments on it.
+   2. for unseen user, user_average_rating equals to global average rating on training+validation set. It's the same for item_average_rating.
 4. early stop when loss on validation set starts to increase.
 5. retrain on both train set and validation set.
 
