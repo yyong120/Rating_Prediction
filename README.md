@@ -5,7 +5,7 @@ https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/assignment2_fa24.pdf
 raw data in df_modcloth.csv.
 
 # (Temporary Dialogue)
-Xudong: I'm a little bit tired, I only finished the data preprocessing part. I will try to write more code (the models) on the evening of 11/28. Maybe you guys can start with section 1/2/4 of the report. Also, feel free to implement any models that you like.
+Xudong: I've finished the first method of section, 3 please find the code in `latent_factor_model.ipynb`. I'm working on the others. Also, feel free to implement any models that you like.
 
 Thank you CXY and GXY.
 
