@@ -16,7 +16,7 @@ https://github.com/MengtingWan/marketBias
 
 # 1b. Perform an exploratory analysis on this dataset to identify interesting phenomena
 ## Different fields in the csv file
-1. timestamp: Here we don't user the info. In the report we could mention maybe we could use this info in the future work.
+1. timestamp: Here we don't use this info. In the report we could mention that maybe we could use this info in the future work.
 2. size: XS, S, M, L, XL, 1X, 2X, 3X and 4X, mapped to 1-9. nan is mapped to 0.
 3. fit: user's feedback for the product. 'Just right', 'Slightly small', 'Very small', 'Slightly large', 'Very large', mapped to 1-5. nan is mapped to 0.
 4. user_attr: user's body shape based on the product each user purchased. Small, Large, mapped to 1-2. nan is mapped to 0.
@@ -28,7 +28,7 @@ https://github.com/MengtingWan/marketBias
 
 In the paper, they have done some analysis, we can take a look at it.
 
-(TODO) plot distribution of average user rating for each user, average item rating for each item, the number of items each user purchased, etc.
+(TODO) plot distribution of average user rating of each user, average item rating of each item, the number of items each user purchased, etc.
 
 
 # 2. Identify a predictive task on this dataset
@@ -49,10 +49,10 @@ In the paper, they have done some analysis, we can take a look at it.
 2. latent factor model with extension, using feature vector \(page 189-191 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
 3. feature engineering xgboost
    1. feature vector includes user_average_rating, item_average_rating, and other features.
-      1. We have considered add the number items a user bought and the number of users purchasing the item into the feature vector. However, these two values can greatly change according to how we divide the train set, validation set and test set. So it may be unstable to include them into the feature vectors. But if we have time, we can do some experiments on it.
+      1. We have considered adding the number of items a user bought and the number of users purchasing the item into the feature vector. However, these two values can greatly change according to how we divide the train set, validation set and test set. So it may be unstable to include them into the feature vectors. But if we have time, we can do some experiments on it.
    2. for unseen user, user_average_rating equals to global average rating on training+validation set. It's the same for item_average_rating.
 4. early stop when loss on validation set starts to increase.
-5. retrain on both train set and validation set.
+5. maybe retrain on both train set and validation set.
 
 ## unseen user/item
 map to 0
