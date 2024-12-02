@@ -46,7 +46,8 @@ In the paper, they have done some analysis, we can take a look at it.
 
 # 3. Select/design an appropriate model
 1. latent factor model \(page 93 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
-   1. maybe different lambdas for beta_u, beta_i, gamma_u, gamma_i
+   1. maybe different lambdas for beta_u, beta_i, gamma_u, gamma_i.
+   2. we could use a large batch size to mimic the equations in the slides.
 2. latent factor model with extension, using feature vector \(page 189-191 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
    1. maybe different lambdas for different attributes, e.g. brand data is too sparse.
    2. mapping unseen/nan to 0 can be easily implemented using pytorch Embedding layer.
