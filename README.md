@@ -22,7 +22,7 @@ https://github.com/MengtingWan/marketBias
 4. user_attr: user's body shape based on the product each user purchased. Small, Large, mapped to 1-2. nan is mapped to 0.
 5. model_attr: product's size based on model image. Small or Small&Large, mapped to 1-2. nan is mapped to 0.
 6. category: 'Dresses', 'Outerwear', 'Bottoms', 'Tops', mapped to 1-4. nan is mapped to 0.
-7. brand: brand name. Many data doesn't have information for this field.
+7. brand: brand name. Many data doesn't have information for this field. 31 brands, nan is mapped to 0.
 8. year: 2010-2019, maped to 0-9.
 9. split: \(I guess\) it means splitting the payment into smaller portions. 0, 1, 2.
 
@@ -46,13 +46,17 @@ In the paper, they have done some analysis, we can take a look at it.
 
 # 3. Select/design an appropriate model
 1. latent factor model \(page 93 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
+   1. maybe different lambdas for beta_u, beta_i, gamma_u, gamma_i
 2. latent factor model with extension, using feature vector \(page 189-191 of https://cseweb.ucsd.edu/classes/fa24/cse258-b/slides/recommendation.pdf\)
+   1. maybe different lambdas for different attributes, e.g. brand data is too sparse.
+   2. mapping unseen/nan to 0 can be easily implemented using pytorch Embedding layer.
 3. feature engineering xgboost
    1. feature vector includes user_average_rating, item_average_rating, and other features.
       1. We have considered adding the number of items a user bought and the number of users purchasing the item into the feature vector. However, these two values can greatly change according to how we divide the train set, validation set and test set. So it may be unstable to include them into the feature vectors. But if we have time, we can do some experiments on it.
    2. for unseen user, user_average_rating equals to global average rating on training+validation set. It's the same for item_average_rating.
 4. early stop when loss on validation set starts to increase.
 5. maybe retrain on both train set and validation set.
+6. maybe use less features. E.g., year, split may not be that relevant, brand data is too sparse.
 
 ## unseen user/item
 map to 0
@@ -376,6 +380,7 @@ WSDM, 2020
 
 # 5. Describe your results
 1. test set = seen test set + unseen test set, we can evaluate both on test set and unseen test set.
+   1. Also include validation loss.
 2. We can evaluate both MSE and the total number of miss-ranked pairs \(see section 2\).
 3. Compare the results of different models and analyze.
 
